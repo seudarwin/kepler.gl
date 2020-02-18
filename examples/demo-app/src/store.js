@@ -45,7 +45,6 @@ let composeEnhancers = compose;
 /**
  * comment out code below to enable Redux Devtools
  */
-/*
 if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     actionsBlacklist: [
@@ -54,7 +53,6 @@ if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
       '@@kepler.gl/LAYER_HOVER'
     ]
   })
-};
-*/
+}
 
 export default createStore(reducers, initialState, composeEnhancers(...enhancers));
