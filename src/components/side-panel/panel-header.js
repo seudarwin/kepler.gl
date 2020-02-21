@@ -98,11 +98,7 @@ const StyledToolbar = styled(Toolbar)`
 `;
 
 export const PanelAction = ({item, onClick}) => (
-  <StyledPanelAction
-    data-tip
-    data-for={`${item.id}-action`}
-    onClick={onClick}
-  >
+  <StyledPanelAction data-tip data-for={`${item.id}-action`} onClick={onClick}>
     {item.label ? <p>{item.label}</p> : null}
     <a target={item.blank ? '_blank' : ''} href={item.href}>
       <item.iconComponent height="20px" />
@@ -124,12 +120,13 @@ export const PanelHeaderDropdownFactory = () => {
           show={show}
           onClose={onClose}
         >
-          {items.map(itm => (
+          {items.map(item => (
             <ToolbarItem
-              key={itm.key}
-              label={itm.label}
-              icon={itm.icon}
-              onClick={itm.onClick}
+              id={item.key}
+              key={item.key}
+              label={item.label}
+              icon={item.icon}
+              onClick={item.onClick}
               onClose={onClose}
             />
           ))}

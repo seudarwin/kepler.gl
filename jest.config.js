@@ -18,31 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import {connect} from 'react-redux';
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
-import styled from 'styled-components';
-import KeplerGl from 'kepler.gl';
-
-const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
-
-const StyledWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-`;
-
-const App = () => (
-  <StyledWrapper>
-    <AutoSizer>
-      {({height, width}) => (
-        <KeplerGl mapboxApiAccessToken={MAPBOX_TOKEN} id="map1" width={width} height={height} />
-      )}
-    </AutoSizer>
-  </StyledWrapper>
-);
-
-const mapStateToProps = state => state;
-const dispatchToProps = dispatch => ({dispatch});
-
-export default connect(mapStateToProps, dispatchToProps)(App);
+module.exports = {
+  preset: 'jest-puppeteer',
+  globals: {
+    URL: 'http://localhost:8080'
+  },
+  testMatch: [
+    '**/test/e2e/**/*.test.js'
+  ],
+  verbose: true,
+  setupFilesAfterEnv: ['./jest-extend-image-snapshot']
+};

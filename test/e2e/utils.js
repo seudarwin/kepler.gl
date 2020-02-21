@@ -18,31 +18,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import {connect} from 'react-redux';
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
-import styled from 'styled-components';
-import KeplerGl from 'kepler.gl';
+export const TIMEOUT = process.env.SLOWMO ? 60000 : 10000;
 
-const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
+export const DEFAULT_WAIT_TIME = {
+  SHORTER: 1000,
+  SHORT: 2000,
+  LONG: 4000,
+  LONGER: 5000
+};
 
-const StyledWrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-`;
+export const detectModalClosing = page =>
+  page.waitFor(() => !document.querySelector('.modal--wrapper'));
 
-const App = () => (
-  <StyledWrapper>
-    <AutoSizer>
-      {({height, width}) => (
-        <KeplerGl mapboxApiAccessToken={MAPBOX_TOKEN} id="map1" width={width} height={height} />
-      )}
-    </AutoSizer>
-  </StyledWrapper>
-);
-
-const mapStateToProps = state => state;
-const dispatchToProps = dispatch => ({dispatch});
-
-export default connect(mapStateToProps, dispatchToProps)(App);
+export const testScreenshot = async (page, options = {}) => {
+  const image = await page.screenshot();
+  expect(image).toMatchImageSnapshot({
+    failureThreshold: 1,
+    failureThresholdType: 'percent',
+    ...options
+  });
+};
