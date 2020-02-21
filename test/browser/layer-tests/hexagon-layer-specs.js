@@ -48,20 +48,11 @@ test('#HexagonLayer -> constructor', t => {
           label: 'test hexagon layer'
         },
         test: layer => {
-          t.ok(
-            layer.config.dataId === 'blue',
-            'HexagonLayer dataId should be correct'
-          );
+          t.ok(layer.config.dataId === 'blue', 'HexagonLayer dataId should be correct');
           t.ok(layer.type === 'hexagon', 'type should be hexagon');
           t.ok(layer.isAggregated === true, 'HexagonLayer is aggregated');
-          t.ok(
-            layer.config.label === 'test hexagon layer',
-            'label should be correct'
-          );
-          t.ok(
-            Object.keys(layer.columnPairs).length,
-            'should have columnPairs'
-          );
+          t.ok(layer.config.label === 'test hexagon layer', 'label should be correct');
+          t.ok(Object.keys(layer.columnPairs).length, 'should have columnPairs');
         }
       }
     ]
@@ -146,11 +137,7 @@ test('#HexagonLayer -> formatLayerData', t => {
           '_filterData should filter data correctly'
         );
         // test layer.meta
-        t.deepEqual(
-          layer.meta,
-          pointLayerMeta,
-          'should format correct hexagon layer meta'
-        );
+        t.deepEqual(layer.meta, pointLayerMeta, 'should format correct hexagon layer meta');
       }
     },
     {
@@ -340,11 +327,7 @@ test('#HexagonLayer -> renderLayer', t => {
         const expectedProps = {
           coverage: layer.config.visConfig.coverage,
           radius: layer.config.visConfig.worldUnitSize * 1000,
-          colorRange: [
-            [8, 8, 8],
-            [9, 9, 9],
-            [7, 7, 7]
-          ],
+          colorRange: [[8, 8, 8], [9, 9, 9], [7, 7, 7]],
           colorScaleType: layer.config.colorScale,
           elevationScaleType: layer.config.sizeScale,
           elevationScale: layer.config.visConfig.elevationScale,
@@ -352,14 +335,8 @@ test('#HexagonLayer -> renderLayer', t => {
           lowerPercentile: layer.config.visConfig.percentile[0]
         };
 
-        const expectedColorBins = [
-          {i: 2, value: 1, counts: 1},
-          {i: 1, value: 2, counts: 2}
-        ];
-        const expectedElevationBins = [
-          {i: 2, value: 1, counts: 1},
-          {i: 1, value: 2, counts: 2}
-        ];
+        const expectedColorBins = [{i: 2, value: 1, counts: 1}, {i: 1, value: 2, counts: 2}];
+        const expectedElevationBins = [{i: 2, value: 1, counts: 1}, {i: 1, value: 2, counts: 2}];
 
         t.deepEqual(
           hexCellLayer.props.data,
@@ -372,13 +349,9 @@ test('#HexagonLayer -> renderLayer', t => {
             expectedHexCellData[i],
             'should pass correct data to hexagon cell layer'
           );
-        })
+        });
         Object.keys(expectedProps).forEach(key => {
-          t.deepEqual(
-            props[key],
-            expectedProps[key],
-            `should have correct props.${key}`
-          );
+          t.deepEqual(props[key], expectedProps[key], `should have correct props.${key}`);
         });
 
         t.deepEqual(
