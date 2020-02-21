@@ -964,6 +964,7 @@ mergedLayer0.config = {
     stroked: true,
     filled: true,
     strokeColor: [181, 18, 65],
+    strokeOpacity: 0.8,
     enable3d: true,
     wireframe: false
   },
@@ -2747,7 +2748,8 @@ mergedLayer1.config = {
     filled: false,
     enable3d: false,
     wireframe: false,
-    strokeColor: [221, 178, 124]
+    strokeColor: [221, 178, 124],
+    strokeOpacity: 0.8
   },
   animation: {enabled: false}
 };

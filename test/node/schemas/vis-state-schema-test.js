@@ -43,15 +43,13 @@ test('#visStateSchema -> v1 -> save layers', t => {
   // save state
   const vsToSave = SchemaManager.getConfigToSave(initialState).config.visState;
 
-  t.deepEqual(Object.keys(vsToSave),
+  t.deepEqual(
+    Object.keys(vsToSave),
     ['filters', 'layers', 'interactionConfig', 'layerBlending', 'splitMaps', 'animationConfig'],
-    'visState should have all 5 entries');
+    'visState should have all 5 entries'
+  );
 
-  const exptectedSavedLayers = [
-    expectedSavedLayer0,
-    expectedSavedLayer1,
-    expectedSavedLayer2
-  ];
+  const exptectedSavedLayers = [expectedSavedLayer0, expectedSavedLayer1, expectedSavedLayer2];
 
   const layersToSave = vsToSave.layers;
 

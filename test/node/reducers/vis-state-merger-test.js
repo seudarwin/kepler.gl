@@ -349,11 +349,7 @@ test('VisStateMerger.v1 -> mergeLayers -> toEmptyState', t => {
         'Should save layers to layerToBeMerged before data loaded'
       );
     } else {
-      t.deepEqual(
-        mergedState[key],
-        oldVisState[key],
-        'Should keep the rest of state same'
-      );
+      t.deepEqual(mergedState[key], oldVisState[key], 'Should keep the rest of state same');
     }
   });
   const parsedData = SchemaManager.parseSavedData(savedStateV1.datasets);

@@ -588,7 +588,8 @@ export const expectedSavedLayer2 = {
       stroked: true,
       filled: true,
       enable3d: false,
-      wireframe: false
+      wireframe: false,
+      strokeOpacity: 0.8
     },
     textLabel: [DEFAULT_TEXT_LABEL]
   },
@@ -623,6 +624,7 @@ export const expectedLoadedLayer2 = {
       colorRange: DEFAULT_COLOR_RANGE,
       strokeColorRange: DEFAULT_COLOR_RANGE,
       strokeColor: [11, 11, 11],
+      strokeOpacity: 0.8,
       radius: 10,
       sizeRange: [0, 10],
       radiusRange: [0, 50],
